@@ -1,0 +1,18 @@
+---
+import { NOUSE_SECTIONS } from "../navigation-categories";
+
+export function getStaticPaths() {
+  return NOUSE_SECTIONS.flatMap((section) =>
+    (section.subsections ?? []).map((subsection) => ({
+      params: {
+        section: section.section,
+        subsection,
+      },
+    }))
+  );
+}
+
+const { section, subsection } = Astro.params;
+---
+<h1>nouse {section}</h1>
+<h2>{subsection}</h2>

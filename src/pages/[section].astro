@@ -1,0 +1,10 @@
+---
+import { NOUSE_SECTIONS } from "./navigation-categories.ts";
+
+export function getStaticPaths() {
+  return NOUSE_SECTIONS.map((section) => ({params: {section : section.section}}))
+};
+
+const { section } = Astro.params;
+---
+<h1>Nouse - {section}</h1>

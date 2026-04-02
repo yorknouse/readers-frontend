@@ -1,0 +1,18 @@
+---
+import { MUSE_SECTIONS } from "../../navigation-categories";
+
+export function getStaticPaths() {
+  return MUSE_SECTIONS.flatMap((section) =>
+    (section.subsections ?? []).map((subsection) => ({
+      params: {
+        section: section.section,
+        subsection,
+      },
+    }))
+  );
+}
+
+const { section, subsection} = Astro.params;
+---
+<h1>Muse - {section}</h1>
+<h2>{subsection}</h2>
