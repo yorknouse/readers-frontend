@@ -1,18 +1,18 @@
 ---
-import { MUSE_SECTIONS } from "../../navigation-categories";
+import { muse_sections, type Section, type Subsection } from "@/config/pages";
+import Layout from "@/layouts/Layout.astro";
 
-export function getStaticPaths() {
-  return MUSE_SECTIONS.flatMap((section) =>
-    (section.subsections ?? []).map((subsection) => ({
-      params: {
-        section: section.section,
-        subsection,
-      },
-    }))
-  );
-}
-
+export const prerender = false;
 const { section, subsection} = Astro.params;
+
+const s_data : Section | undefined = muse_sections.find(s => s.slug === section);
+const ss_data : Subsection | undefined = s_data?.subsections.find(ss => ss.slug === subsection);
+
+if (!ss_data) {
+  return new Response(null, { status: 404 });
+}
 ---
-<h1>Muse - {section}</h1>
-<h2>{subsection}</h2>
+<Layout title={"Muse | " + ss_data.name} description={ss_data.description}>
+	<h1>Muse - {section}</h1>
+  <h2>{subsection}</h2>
+</Layout>

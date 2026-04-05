@@ -1,10 +1,17 @@
 ---
-import { MUSE_SECTIONS } from "../navigation-categories.ts";
+import { pages } from "@/config/pages";
+import Layout from "@/layouts/Layout.astro";
+import type { Page } from "@/types/content";
 
-export function getStaticPaths() {
-  return MUSE_SECTIONS.map((section) => ({params: {section : section.section}}))
-};
+export const prerender = false;
+const { section } = Astro.params;
+const page : Page | undefined = pages.find(p => p.slug == section && p.publication == "muse");
 
-const { section} = Astro.params;
+if (!page){
+  return Astro.rewrite("/404");
+}
+
 ---
-<h1>Muse - {section}</h1>
+<Layout {...page}>
+	{page.title}
+</Layout>

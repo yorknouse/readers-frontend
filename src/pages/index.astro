@@ -1,12 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "../styles/global.css";
-import WebsiteStructuredData from "@/components/WebsiteStructuredData.astro";
-import { nouse_sections } from "@/config/sections";
 ---
-
-<Layout title="bosh" description="Example Astro site using structured data.">
-	<WebsiteStructuredData slot="structured-data" />
-	Homepage articles go here
-	{JSON.stringify(nouse_sections[0].subsections)}
+<Layout title={"Nouse | Home"} description="Nouse">
+	Nouse Homepage
 </Layout>
