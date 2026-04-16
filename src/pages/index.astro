@@ -1,7 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "../styles/global.css";
+import type { Page } from "@/types/content";
+
+const page : Page = {
+name: "Home",
+slug: "",
+description: "Home",
+title: "Nouse",
+publication: "nouse",
+type: "section"
+}
 ---
-<Layout title={"Nouse | Home"} description="Nouse">
-	Nouse Homepage
+<Layout {...page}>
+	Hello
 </Layout>
