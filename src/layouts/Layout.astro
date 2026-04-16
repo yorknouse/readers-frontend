@@ -1,7 +1,6 @@
 ---
 import Footer from '@/components/Footer.astro';
 import Navbar from '@/components/Navbar.astro';
-import NavbarTwo from '@/components/NavbarTwo.astro';
 import "../styles/global.css";
 import type { Page } from '@/types/content';
 
@@ -37,13 +36,12 @@ const {
     <meta property="og:locale" content="en_GB" />
     <title>{title}</title>
   </head>
-  <body class="h-full flex flex-col">
-    <NavbarTwo></NavbarTwo>
-    <main class="flex-1 h-full flex flex-col">
+
+  <body class="min-h-screen flex flex-col">
+    <Navbar publication={publication} />
+    <main class="flex-1 flex flex-col">
       <slot />
     </main>
-      <Footer colour={colour ? colour : "bg-blue-400"} hover_colour={hover_colour ? hover_colour : "text-blue-300"} text_colour={text_colour ? text_colour : "text-blue-400"} border_colour={border_colour ? border_colour : "border-blue-400"}'></FooterTwo>
-
-
+   <Footer colour={colour ? colour : "bg-blue-400"} hover_colour={hover_colour ? hover_colour : "text-blue-300"} text_colour={text_colour ? text_colour : "text-blue-400"} border_colour={border_colour ? border_colour : "border-blue-400"}'></FooterTwo>
   </body>
 </html>
