@@ -17,9 +17,9 @@ export type Page = {
 };
 
 export type Author = {
-    name:string;
-    role:string;
-    slug:number;
+  name: string;
+  role: string;
+  slug: number;
 };
 
 export type Article = {};
