@@ -1,0 +1,27 @@
+---
+import TeamGrid from "@/components/TeamGrid.astro";
+import Layout from "@/layouts/Layout.astro";
+import {getTeamList} from '@/lib/api';
+import type {Author, Page} from "@/types/content";
+
+const page : Page = {
+name: "Our Team",
+slug: "team",
+description: "Our Team",
+title: "Nouse | Our Team",
+publication: "nouse",
+type: "info"
+}
+
+const data : Author[] = await getTeamList();
+---
+
+<Layout {...page}>
+    <div class="mx-3">
+        <div class="py-4 text-center">
+        <h1 class="font-serif text-4xl font-bold text-gray-900 mb-2">Our Team</h1>
+        </div>
+    </div>
+    {data.length > 0 ? <TeamGrid teamMembers={data}></TeamGrid> : <>Could not load team members.</>}
+    </div>
+</Layout>

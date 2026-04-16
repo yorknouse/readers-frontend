@@ -16,7 +16,11 @@ export type Page = {
   parent_slug?: string;
 };
 
-export type Author = {};
+export type Author = {
+  name: string;
+  role: string;
+  slug: number;
+};
 
 export type Article = {};
 

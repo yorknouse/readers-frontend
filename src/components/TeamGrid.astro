@@ -1,0 +1,29 @@
+---
+interface TeamMember {
+  role: string;
+  name: string;
+  slug: number | string;
+}
+
+interface Props {
+  teamMembers: TeamMember[];
+}
+
+const { teamMembers } = Astro.props;
+---
+
+<section class="w-full py-8 my-1 mx-10">
+  <ul class="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-x-16 max-w-8xl mx-auto">
+    {teamMembers.map((member) => (
+      <li class="break-inside-avoid flex flex-col gap-0.5 py-3 border-b border-gray-200">
+        <span class="font-serif text-[0.7rem] uppercase tracking-widest text-gray-400">{member.role}</span>
+        <a
+          href={`/author/${member.slug}`}
+          class="font-serif text-sm font-bold text-gray-900 leading-snug hover:text-red-700 hover:underline underline-offset-2 transition-colors duration-150"
+        >
+          {member.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
